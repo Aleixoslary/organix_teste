@@ -1,0 +1,1755 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --verde-verdadeiro:#82E4AE;
+    --roxo: #7A3F86;
+    --branco: white;
+    --verde_claro:#D2ECE8;
+    --roxo-claro:#9C4289;
+    /* --fonte_titulo: 'Nunito', sans-serif; */
+    --fonte_titulo:'Segoe UI' ;
+    --fonte_text: 'Vollkorn', serif;
+    --branco:white;
+    --azul: #D2EEE6;
+    --verde_mobile:rgba(118 ,197, 187, .2);
+    --roxo_fundo: #7e3f8159;
+    --roxo_letra_fundo:#5a2a5d;
+   }
+/*_____________________________________________*/
+header{
+    background-color: var(--branco);
+   position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 2;
+    -webkit-box-shadow: 0px 4px 12px -2px rgba(128,128,128,1);
+    -moz-box-shadow: 0px 4px 12px -2px rgba(128,128,128,1);
+    box-shadow: 0px 4px 12px -2px rgba(128,128,128,1);   
+}
+
+/* PÁGINA HOME */
+
+header img {
+    width: 240px;
+    height: 36px;
+}
+
+.container-home {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0px 20px 0px; 
+    text-align: center;  
+}
+
+.nav-home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ul-home{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.tracinho{
+    padding: 0px 13px;
+    font-weight: bold;
+    font-size: 25px;
+    color: var(--roxo);
+
+}
+
+.nav-2-home {
+    margin-left: 20px;
+}
+
+.nav-home a {
+    text-decoration: none;
+    color: var(--roxo);
+    font-weight: bold;
+    font-size: 25px;
+    font-family: var(--fonte_titulo);
+}
+
+a {
+    text-decoration: none;
+    color: var(--roxo);
+    font-weight: bold;
+}
+/* PÁGINA HOME */
+
+/* FOOTER */
+
+footer{
+ background-color: var(--branco);
+}
+.container-home-footer {
+    width: 80%; 
+    height: 10vh;
+    margin: auto;
+}
+
+.centro-footer p {
+    color: var(--roxo);
+    font-family: var(--fonte_titulo);
+    font-size: 1.5em; 
+}
+
+.icone-redesocial-footer {
+  display: flex;
+}
+/*____________________________  mobile footer __________________*/
+.icone-redesocial-footer-mobile{
+    display: none;
+}
+
+.icone-redesocial-footer img {
+    padding:15px;
+    width: 56px;
+    height: 56px;
+}
+
+.rodape {
+    width: 58.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/*main*/
+
+.main{
+    margin: auto;
+    /*aleracao teste*/
+    width: 100%;
+}
+
+.banner{
+    background-image: url(../imagens/banner4.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    height: 500px;
+    margin-top: 77px;
+}
+
+.dicas{
+    margin:auto;
+    padding: 40px 100px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.h1_dicas{
+    color:var(--roxo);
+    text-align:center;
+    margin-top: 50px;
+    font-size: 30px;
+    font-family: var(--fonte_titulo);
+}
+
+.dicas p{
+    text-align: justify;
+    width: 100%;
+}
+.btn_saiba_mais{
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px var(--roxo);
+    font-size: 1.1em;
+    font-family: var(--fonte_titulo);
+}
+.btn_saiba_mais:hover{
+    background-color: var(--verde_claro);
+}
+
+.card{
+    width: 380px;
+    height: 570px;
+    margin-right: 80px;
+    margin-top: 40px;
+    margin-bottom: 90px;
+    text-align: center;
+    color: var(--roxo);
+    font-size: 1.5em;
+}
+
+.card img{
+    width: 80%;
+    height:50%;
+    border-radius: 50%;
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(204,204,204,1);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(204,204,204,1);
+    box-shadow: 5px 5px 5px 0px rgba(204,204,204,1);
+}
+.card h3{
+margin: 35px;
+font-size: 1em;
+font-family: var(--fonte_titulo);
+}
+
+
+/*slide*/
+.swiper-slide{
+    text-align: center;
+    padding: 40px 10px; 
+    font-size: 1.4em;
+    color: white;
+    font-weight: bold;
+    font-family: var(--fonte_titulo);
+    z-index: 0 !important;
+}
+
+.swiper-container{
+    background-color: var(--roxo);
+    height: 400px;
+    padding:  0px;
+    margin: -5px auto !important;
+    z-index: 0 !important;
+}
+
+/*sombra de quem somos*/
+.sombra{
+    -webkit-box-shadow: 0px -3px 13px -6px rgba(0,0,0,1);
+    -moz-box-shadow: 0px -3px 13px -6px rgba(0,0,0,1);
+    box-shadow: 0px -3px 13px -6px rgba(0,0,0,1);
+}
+.home-contato{
+background-color: var(--roxo-claro);
+padding:  40px;
+text-align: center;
+color: var(--branco);
+font-size: 1.7em;
+margin-top: 50px;
+font-family: var(--fonte_titulo);
+}
+
+
+
+/*Quem somos (Igor)*/
+.quem-somos{
+    display: flex;
+    width: 100%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px 0px;
+
+}
+.quem-somos h3{
+    color: var(--roxo);
+    font-size: 36px;
+    font-family: var(--fonte_titulo);
+}
+
+.div-box{
+    width: 400px;
+    height: 400px;
+    background-color: var(--verde_claro);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 50px;
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(204,204,204,1);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(204,204,204,1);
+    box-shadow: 5px 5px 5px 0px rgba(204,204,204,1);
+}
+.div-txt{
+    color: var(--roxo);
+    text-align: center;
+    width: 300px;
+    font-size: 20px;
+    font-family: var(--fonte_titulo);
+}
+
+
+.valores{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 60px;
+    flex-wrap: wrap;
+   
+}
+.div-txt h4{
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+.nossa-historia{
+    margin-top: 80px;
+    text-align: center;
+    justify-content: center;
+    height: 650px;
+    background-image: url(../imagens/skyla-design-arNgdMNFujc-unsplash.jpg);
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    color: var(--branco);
+    display: flex;
+    background-attachment: fixed; 
+}
+
+.historia-txt h2{
+    font-family: var(--fonte_titulo);
+    margin-bottom: 30px;
+}
+.historia-txt{
+    width: 1000px;
+    font-size: 30px;
+    margin-bottom: 100px;
+    font-family: var(--fonte_text);
+}
+
+/*Quem Somos (Igor)*/
+
+/* TELA DE CADASTRO */
+
+.main_cad{
+    background-image: url(../imagens/cadastro/pineapple-supply-co-vb_V6W1nmeA-unsplash.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    margin-top:80px;
+}
+
+.btn_cadastro{
+    text-align: center;
+    text-decoration: none;
+    color: var(--roxo);
+    font-weight: bold;
+    font-size: 25px;
+    font-family: var(--fonte_titulo);
+
+ }
+
+ .btn_cadastro a,.btn_cadastro p{
+     padding: 5px 15px 5px 15px;
+     margin-top: 15px;
+     border-radius: 10px;
+     text-decoration: none;
+ }
+
+.esquerdo_cadastro{
+    background-image:linear-gradient(rgba(132, 66, 130,0.5),rgba(132, 66, 130,0.5)); 
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 81vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn_cadastro1{
+    background-color: var(--verde_claro);
+    color: var(--roxo);
+}
+.direito_cadastro{
+    text-align: center;
+    background-image:linear-gradient(rgba(118, 197, 187,0.5),rgba(118, 197, 187,0.5)); 
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 81vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn_cadastro2{
+    background-color: var(--verde_claro);
+    color: var(--roxo);
+    /*__________________________________*/
+    padding: 5px 15px 5px 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+
+/* MENU PERFIL */
+ 
+.nav-perfil{
+    display: flex;
+    /* justify-content:flex-end;
+    width: 77%;  */
+    
+}
+
+.ul-perfil{
+    display: flex;
+    justify-content: space-between;
+    /* width: 50%; */
+    list-style: none;
+}
+
+.ul-perfil a{
+    text-decoration: none;
+    color: var(--roxo);
+    font-weight: bold;
+    font-family: var(--fonte_titulo);
+}
+
+.btn_perfil{
+    padding: 5px 20px 5px 20px;
+    border-radius: 10px;
+    background-color: var(--verde_claro);
+    margin-top: 7px;
+    -webkit-box-shadow: 4px 4px 12px -5px rgba(128,128,128,1);
+    -moz-box-shadow: 4px 4px 12px -5px rgba(128,128,128,1);
+    box-shadow: 4px 4px 12px -5px rgba(128,128,128,1);
+    font-size: 1.5em;
+    margin-left:30px;
+}
+
+.btn_perfil2{
+    padding-left: 50px ;
+    padding-right:50px;
+} 
+
+/* FORM CADASTRO-COMPRADOR / PRODUTOR */
+
+.body_form{
+    background-color: gray;
+}
+
+.main_cadastro_comprador, .main_cadastro_produtor{
+    background-color:var(--roxo-claro);
+    color: var(--branco);
+    font-family: var(--fonte_titulo);
+    width: 80vw;
+    height: 80vh;
+    padding: 50px;
+    margin: auto;
+    padding-bottom:100px;
+}
+
+.container-cadastro-comprador, .container-cadastro-produtor{
+    margin: auto;
+    width: 90%;
+}
+
+.h1_form h1{
+    margin-bottom: 5px;
+}
+
+
+.h1_form{
+    text-align: center;
+}
+
+#cadastro_comprador, #cadastro_produtor{
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    margin: auto;
+}
+
+
+#cadastro_comprador label, #cadastro_produtor label{
+    font-size: 1.5em;
+
+}
+
+#cadastro_comprador input, #cadastro_comprador select, #cadastro_produtor input, #cadastro_produtor select{
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 4%;
+    margin-top: 1%;
+    font-size: 1em; 
+    
+}
+
+#cadastro_comprador ::placeholder , #cadastro_produtor ::placeholder {
+    padding-left: 10px;
+
+}
+
+#cadastro_comprador div, #cadastro_produtor div{
+    display: flex;
+    flex-direction: column;
+}
+
+#cadastro_comprador .form_txt, #cadastro_produtor .form_txt{
+    width: 20vw;
+}
+
+#cadastro_comprador .form_txt_cidade,  #cadastro_produtor .form_txt_cidade{
+    width: 10vw;
+}
+#cadastro_comprador .form_date{
+    width: 8vw;
+}
+
+#cadastro_comprador .form_number,  #cadastro_produtor .form_number {
+    width: 15vw;
+}
+
+#cadastro_comprador .form_lista,  #cadastro_produtor .form_lista{
+    width: 11vw;
+}
+
+
+#cadastro_comprador .btn, #cadastro_produtor .btn{
+    width: 15vw;
+    font-size: 30px;
+    bottom: 0px;
+    background-color: var(--verde_claro);
+    color: var(--roxo);
+    margin-top: 100px;
+
+}
+
+
+
+
+/* PÁGINA DE RESULTADO DE PRODUTOS */
+
+.itens-encontrados {
+    display: flex;
+    width: 100%;
+    background-image: linear-gradient(rgba(180,81,108),rgba(82,49,147));
+  }
+
+.lado-direito-resultado {
+    display: flex;
+    width: 100%;
+    
+}
+
+.lado-direito-resultado1 {
+    background-image: url(../imagens/fruta3.png);
+    background-position: bottom;
+    width: 100%;
+    padding-top: 150px;
+}
+
+.container-produtos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.container-produtos h2 {  
+    
+    font-size: 30px;
+    font-family: var(--fonte_titulo);    
+    color: var(--roxo);
+    text-align: center;
+    margin-top: 100px;
+}
+
+.container-cards {
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: var(--roxo_fundo);
+    width: 80%;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.container-cards ul {
+list-style: none;
+}
+
+.card-produto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.nome-produto {
+    font-size: 20px;
+    font-family: var(--fonte_titulo);
+    color: var(--roxo_letra_fundo);
+    font-weight: bold;
+}
+
+.card-produto li {
+    font-size: 16px;
+    font-family: var(--fonte_titulo);
+    color: var(--roxo_letra_fundo);
+}
+
+.card-produto button {
+    padding:8px 20px;
+    margin: 15px;
+    background-color: white;
+    border-radius: 8px;
+    font-family: var(--fonte_titulo);
+    font-size: 15px;
+    color: var(--roxo);
+    font-weight: bold;
+
+}
+
+.imagem-redonda-card-produto{
+    border-radius: 50%;
+}
+.imagem-redonda-card-produto img{
+    width: 80%;
+    height: 80%;
+}
+
+/*______________________________*/
+
+
+/* LADO ESQUERDO */
+.esquerdo_perfil img{
+    width: 50%;
+    margin-top: 150px;   
+}
+
+.esquerdo_perfil{
+    /*________*/
+    margin:auto;
+    /*_____________*/
+    width: 40%;
+    height: 100vh;
+    text-align: center;
+}
+
+.menu_perfil{
+    font-weight: bold;
+    font-size:23px;
+    font-family: var(--fonte_titulo);    
+    color: var(--branco);
+}
+
+.esquerdo_perfil h2{
+  
+    font-weight: bold;
+    font-size:30px;
+    margin-top: 25px; 
+}
+
+.menu_perfil a,.menu_perfil p{
+    text-decoration: none;
+    color: var(--branco);
+    margin-top: 30px;
+}
+
+
+  /*________*/
+
+  .menu_perfil a:hover{
+    padding: 5px;
+    background-color: var(--verde_claro);
+    color:var(--roxo);
+    border-radius: 10px;
+}
+    /*_____________*/
+
+/* CARD DAS RECEITAS */
+
+.imagem-redonda-card-receita img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+
+}
+
+.swiper-container {
+    background-color: var(--roxo);
+    text-align: center;
+  
+}
+/* modificações para mobile*/
+
+.menu_perfil{
+    font-weight: bold;
+    font-size:20px;
+    font-family: var(--fonte_titulo);    
+    color: var(--branco);
+}
+
+
+
+.menu_perfil a,.menu_perfil p{
+    text-decoration: none;
+    color: var(--branco);
+    margin-top: 30px;
+}
+
+
+
+/*Pesquisar Produtos (Igor)*/
+
+#pesquisar-produto ::placeholder{
+    font-size: 20px;
+    
+}
+.container-pesq-prod {
+    margin: auto;
+    /* margin-top: 50px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: var(--roxo_fundo);
+    /* width: 80%; */
+    padding: 40px;
+    border-radius: 30px;
+    font-family: var(--fonte_titulo);
+    font-size: 25px;
+    color:var(--roxo_letra_fundo);
+}
+
+#pesquisar-produto{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#pesquisar-produto label{
+    margin-top: 50px;
+}
+
+#pesquisar-produto #POST-preco-prod{
+width: 5vw;
+height: 4vh;
+margin-left: 10px;
+}
+
+.max-min{
+    /* margin: 50px 0px; */
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.btn-buscar{        
+    font-size: .9em;
+    border-radius: 4px;
+    padding: 10px;
+    border: none;
+    background-color: var(--branco);
+    color: var(--roxo);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#pesquisar-produto select{
+    border-radius: 10px;
+    border: none;
+    /* width: 10vw; */
+    /* height: 50px; */
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+#pesquisar-produto select option{
+    font-size: 20px;
+    font-family: var(--fonte_titulo);
+}
+   
+.prodt{
+    width: 20vh;
+    height: 6vh;
+    margin-top: 10%;
+    font-family: var(--fonte_titulo);
+    /* font-weight: bold; */
+    font-size: 20px;
+
+}
+.reg{
+    width: 20vh;
+    height: 6vh;
+    font-family: var(--fonte_titulo);
+    font-size: 20px;
+    /* font-weight: bold; */
+    /* margin-top: 10%; */
+}
+.btn-b{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.input_produto_list{
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+
+
+
+/* PERFIL COMPRADOR */
+
+.container-perfil1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    flex-wrap: wrap;
+}
+
+.container-perfil1 h2{
+    font-size: 25px;
+    color: var(--roxo);
+    /* margin: 25px; */
+    margin: 100px 25px 25px 25px;
+    font-family: var(--fonte_titulo);
+}
+
+.container-perfil2 h4{
+    font-family: var(--fonte_titulo);
+    color: var(--roxo_letra_fundo);
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.container-perfil2 {
+    margin: auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color:var(--roxo_fundo);
+    width: 80%;
+    padding: 45px 20px 45px 20px;
+    border-radius: 10px;
+    line-height: 3em;
+}
+
+
+.container-perfil2 input {
+list-style: none;
+
+}
+
+.container-perfil2 p{
+    color: black;
+    font-family: var(--fonte_titulo);
+    font-size: 20px;
+
+}
+
+.lado-menu-resultado{
+    display: flex;
+    width: 100%;
+
+}
+
+
+.botao-perfil {
+    text-align: center;
+    text-decoration: none;
+    color: var(--roxo);
+    font-weight: bold;
+    font-size: 20px;
+    font-family: var(--fonte_titulo);    
+    background-color: var(--verde_claro);
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    margin-top: 1vh;
+}
+
+
+    /* CADASTRO DE RECEITAS */
+/* pagina cad prod */
+.direita_cadastro_receita{
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: var(--roxo_fundo);
+    width: 90%;
+    padding: 20px;
+    border-radius: 30px;
+    align-items: center;
+    FONT-SIZE: 1.2EM;
+}
+
+
+#cadastrar-receita{
+    display: flex;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    color: var(--roxo_letra_fundo);
+    margin-bottom: 10px;
+
+}
+
+
+.receitas{
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    align-content: center;
+    margin-top: 30px;  
+}
+
+.receitas2{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 94%;
+    margin-top: 30px;
+}
+
+.tot_receita{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+  
+.cat_receita{
+    display: flex;
+    flex-direction: column;
+    margin: auto 60px;
+    /* margin: auto 125px;
+    MARGIN-LEFT: 25PX; */
+  
+}
+.cor-porcoes{
+  background-color: #7A3F86;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  width: 405px;
+  margin: 5%  auto;
+  color: var(--branco);
+}
+
+
+
+textarea{
+    resize: none;
+    border-radius: 5px;
+    border: none;
+}
+
+
+#POST-cadastro-ingredientes{
+    margin: 0px;
+    width: 28vh;
+    /* -------------------  width: 45vh; ----------------*/
+    height: 120px;
+    resize: none;
+    margin-top: 10px;
+}
+
+#POST-nome-receita{
+    justify-content: space-around;
+    /* margin: 10px; */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+
+#POST-porcoes-receita{
+    padding: 5px ; 
+    width: 15%;
+    margin-left: 10px;
+}
+
+#POST-tempo-receita{
+    padding: 5px; 
+    width: 15%;
+    margin-right: 10px;
+    margin-left: 8px;
+}
+
+.POST-nome-receita{
+    margin-left: 20px;
+}
+
+
+.porcoes{
+    width: 100%;
+    height: 20%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+.esquerdo_perfil-2{
+    width: 40%;
+    text-align: center;
+    margin: 5px;
+}
+
+.itens-encontrados-cadastro {
+    display: flex;
+    width: 100%;
+    background-image: linear-gradient(rgba(180,81,108),rgba(82,49,147));
+    font-family: var(--fonte_text);
+  
+}
+  .esquerdo_perfil-2 img{
+    margin-top: 20px;
+}
+
+#POST-nome-receita{
+    width: 90%;
+}
+
+#POST-btn-enviar{
+    margin-top: 20px;
+}
+
+#POST-escolha-categoria{
+margin-top: 30px;    
+}
+
+.categoria-receitas{
+    padding: 6px;
+    border-radius: 5px;
+}
+.btd-enviar{
+    padding: 8px 25px;
+    background-color: var(--verde_claro);
+    color: var(--roxo_letra_fundo);
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+/*-------------------------------------*/
+
+/* PERFIL PRODUTOR */
+.lado-direito-perfil-produtor {
+    display: flex;
+    width: 100%;
+}
+
+.container-perfil {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.container-perfil h2 {    
+    font-size: 40px;
+    font-family: var(--fonte_titulo);    
+    color: var(--roxo);
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 30px;
+}
+
+.container-informacoes-produtor {
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--roxo_fundo);
+    width: 60%;
+    padding: 45px 20px 45px 20px;
+    border-radius: 10px;
+    font-family: var(--fonte_titulo);
+    line-height: 3em;
+}
+
+.container-informacoes-produtor ul {
+list-style: none;
+}
+
+.container-informacoes-produtor h4{
+    font-family: var(--fonte_titulo);
+    color: var(--roxo_letra_fundo);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.container-informacoes-produtor p {
+    color: black;
+    font-family: var(--fonte_titulo);
+    font-size: 20px;
+}
+
+.bold-info-type{
+    font-weight: bold;
+    color: var(--roxo_letra_fundo);
+    font-size: 20px
+}
+
+.editar-perfil {
+    margin-bottom: 5vh;
+    text-align: center;
+    text-decoration: none;
+    color: var(--roxo);
+    font-weight: bold;
+    font-size: 20px;
+    font-family: var(--fonte_titulo);
+    background-color: var(--verde_claro);
+    border-radius: 5px;
+    padding: 15px;
+    border: none;
+    margin-top: 1vh;
+}
+
+/* CADASTRO DE PRODUTOS/PRODUTOR */
+.container-cards1 {
+    margin: auto;
+    /*______________se der merda_________________________*/
+    width: 90%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 30px;
+    height: 80%;
+}
+
+#form-cadastrar-produto{
+        width: 40%;
+        margin: auto;
+        background-color: var(--roxo_fundo);
+        color: var(--roxo_letra_fundo);
+        padding: 70px 10px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        text-align: center
+     
+}
+
+.input_form_cad{
+    width: 25vh;
+    height: 4vh;
+    margin-bottom: 2vh;
+    border-radius: 3px;
+    border: none;
+    font-family: var(--fonte_text);
+}
+#cad-preco{
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+}
+.inp-date{
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+} 
+.lbl-form-cad-prod{
+    padding: 10px 10px;
+    font-size: 20px;
+    font-family: var(--fonte_titulo)
+}
+.btn-cadastrar{
+    width: 22vh;
+    height: 6vh;
+    font-size: 1.2em;
+    border-radius: 4px;
+    padding: 10px;
+    border: none;
+    background-color: var(--branco);
+    color: var(--roxo);
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#POST-preco-prod{
+    width: 9vw;
+    margin-left: 4px;
+    }
+    .max-min label {
+        margin-right: 20px;
+    }
+/*cad produtor e comprador*/
+    
+.main_cadastro_comprador, .main_cadastro_produtor{
+    height: 100%;  
+}
+/*---------------------------*/
+
+/*MENU PARA CELULAR*/
+.container-home-responsivo{
+    display: none;
+}
+
+/* MEDIAs */
+@media(max-width:450px){
+/*MENU PARA CELULAR*/
+.container-home{
+    display: none !important;
+    
+}
+.container-home-responsivo{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px 15px 0px;
+    text-align: center;
+    background-color: var(--roxo);
+    -webkit-box-shadow: 1px 2px 3px 1px rgba(112,112,112,1);
+    -moz-box-shadow: 1px 2px 3px 1px rgba(112,112,112,1);
+    box-shadow: 1px 2px 3px 1px rgba(112,112,112,1);
+  
+    position: fixed;
+    top: 0px;
+}
+.logo-cenoura{
+    width: 54px;
+    height: 54px;
+    margin-right: 10px;
+}
+.menu-bar{
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    
+}
+.container-home-responsivo{
+    color: var(--branco);
+    font-weight: bold;
+    font-family: var(--fonte_titulo);
+    font-size: 1.3em;
+}
+
+
+.swiper-container {
+    display: none !important;
+}
+.banner{
+    display: block !important;
+    background-image: url(../imagens/banner.jpg);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    height: 350px;
+    margin-top: 10px;
+}
+
+
+.home-contato {
+    background-color: var(--verde_mobile);
+    color: var(--roxo);
+}
+
+footer{
+    background-color: var(--roxo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6vh;
+    margin-top: -6px;
+}
+.icone-redesocial-footer{
+    display: none;
+}
+.icone-redesocial-footer-mobile{
+    display: flex;
+    align-items: center;
+    background-color: var(--roxo);
+    justify-content: space-between;
+    margin: auto;
+    width: 170px;
+}
+
+.icone-redesocial-footer-mobile img {
+    padding:10px;
+    width: 36px;
+    height: 36px;
+}
+/*mobile cadastro*/
+.esquerdo_cadastro {
+    width: 100%;
+    height: 70vh !important;
+}
+   /*Cadastro Receitas*/
+    .label_porcoes{
+        margin:5px 100px;
+    }
+    #POST-tempo-receita
+    {
+        margin:5px 100px;
+        
+    }
+    #POST-porcoes-receita
+    {
+        margin:5px 100px;
+    }
+    #POST-escolha-categoria {
+        margin-top: 100px;
+    }
+/*____________________ cad produtos produtor MOBILE _______________________*/
+   .container-cards1 {
+    width: 90%;
+    margin-top: 58px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 30px;
+    height: 80%;
+}
+.card {
+    margin-top: 50px;
+    /* padding: 18px 59px; */
+}
+
+/*quem somos */
+
+.historia-txt{
+ margin-top: 200px;
+}
+}
+
+@media(max-width:498px){
+    /*main*/
+    main{
+        width: 100vw;
+    }
+    /* PÁGINA HOME */
+     .container-home{
+        font-size: .8em;
+    }
+    
+    
+  
+    .swiper-container{
+        background-color: var(--roxo);
+        height: 400px;
+        padding:  0px;
+        margin: -5px auto !important;
+        z-index: 0 !important;
+    }
+
+    .banner{
+        display: none;
+    }
+  
+    .dicas{
+        font-size: 15px;
+        padding: 40px 20px;
+  
+    }
+    .card{
+        margin: 10px 0px;
+    }
+    .card img {
+        /*alteração teste*/
+        width: 80% !important;
+        height: 50% !important;
+    }   
+    
+    .nav-home a {
+        text-decoration: none;
+        color: var(--roxo);
+        font-weight: bold;
+        font-size: 1.2em;
+        font-family: var(--fonte_titulo); 
+    }
+
+    
+    .icone-redesocial-footer img {
+        padding:10px;
+        width: 36px;
+        height: 36px;
+    }
+    
+    /* CADASTRO DE RECEITAS */
+
+    .cor-porcoes {
+    background-color: #7A3F86;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    width: 255px;
+    height: 55%;
+    margin: 5% auto;
+    }
+   
+    /* PERFIL DO COMPRADOR */
+    .container-perfil2 p{
+        font-size: 15px;
+    }
+
+    .container-perfil2 h4{
+        font-size: 18px;
+    }
+
+    .botao-perfil{
+        margin-top: 1vh;
+    }
+
+    .container-perfil1 h2{
+        font-size: 30px;
+        color: var(--roxo);
+        margin: 120px 25px 25px 25px;
+    }
+    .container-perfil h4{
+        font-size: 20px;
+    }
+} 
+
+@media(max-width:760px){
+   
+    .main_cad{
+        display: flex;
+        flex-direction: column;
+    }     
+
+    .esquerdo_cadastro img, .direito_cadastro img{
+        width: 50%;
+        height: 50%;
+    }
+
+    .direito_cadastro, .esquerdo_cadastro{
+        width: 100%;
+        height: 40vh;
+    }
+
+    /* FOOTER */
+
+    .icone-redesocial-footer img{
+        width: 50%;
+        height: 50%;
+    }
+    .centro-footer {
+    display:none;
+    }
+
+    .rodape{
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    }
+    
+  
+/* PESQUISAR PRODUTOS */
+    .max-min input{
+        margin-bottom: 10px;
+    }
+    .max-min{
+        margin: 30px 0px;
+        justify-content: center;
+    }
+    #pesquisar-produto{
+        /* text-align: center; */
+        display: flex;
+    }
+     /* FORMULÁRIO */
+    
+ 
+  
+  #cadastro_comprador,#cadastro_produtor {
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      width: 50%;
+  }
+
+  #cadastro_comprador label, #cadastro_produtor label{
+      font-size:1em;
+  }
+  
+  #cadastro_comprador div, #cadastro_produtor div {
+      display: flex;
+      flex-direction: column;
+  }
+  
+  #cadastro_comprador input, #cadastro_comprador select, #cadastro_produtor input,#cadastro_produtor select {
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 1em;
+  }
+  #cadastro_comprador .media_input_cad, #cadastro_produtor .media_input_cad{
+       width: 50vw;
+  }
+         
+  
+  #cadastro_comprador .btn, #cadastro_produtor .btn{
+      font-size: 20px;
+      bottom: 0px;
+      background-color: var(--verde_claro);
+      color: var(--roxo);
+      margin-top: 40px;
+}   
+
+}
+
+@media(max-width:800px){
+    .container-home {
+        width: 375px;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center; 
+        padding: 20px 0px 20px 0px;
+        text-align: center;
+    }
+    .ul-home li {
+        padding:2px;
+    }
+  
+    .menu_perfil{
+        font-weight: bold;
+        font-size:12px;
+        font-family: var(--fonte_titulo);      
+        color: var(--branco);
+    }
+    
+    .esquerdo_perfil h2{
+        text-decoration: underline;
+        font-weight: bold;
+        font-size:18px;
+        margin-top: 25px; 
+    }
+
+        /*perfil items encontrados*/
+
+    .container-produtos h2 {
+        margin-top: 30px;
+        font-size: 20px;
+    } 
+
+    /* CADASTRO DE RECEITAS */
+    .esquerdo_perfil-2{
+        width: 100%;
+        text-align: center;
+        display: flex;
+        margin: auto;
+        justify-content: space-around;
+    } 
+    
+    .itens-encontrados-cadastro{
+        display: flex;
+        flex-wrap: wrap;
+        /* width: 100vw;-------------------------------- */
+        width: 100%;
+        background-image: linear-gradient(rgba(180,81,108),rgba(82,49,147));
+    } 
+    .esquerdo_perfil-2 img{
+        height: 14vh;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .menu_perfil{
+    font-size: 11px;
+    }
+    .menu_perfil p{
+     margin: 10px;
+    }
+    
+    .menu_perfil h2{
+        margin: 12px;
+       }
+    .cor-porcoes {
+        background-color: #7A3F86;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+        width: 94%;
+        height: 55%;
+        margin: 40px auto;
+    }
+   /* QUEM SOMOS */
+    .historia-txt{
+        font-size: 20px;
+    }
+
+    /*buscar produtos*/
+    #pesquisar-produto select{
+        border-radius: 10px;
+        border: none;
+        width: 78vw;
+        height: 50px;
+        margin-top: 10px;
+        text-align: left;
+        
+        }
+
+    .esquerdo_perfil{
+        display: none !important;
+    }
+    .esquerdo_perfil-2{
+        display: none !important;
+    }
+
+    /*cad. receitas*/
+    #POST-cadastro-ingredientes{
+        width:100% !important;
+        /*------------*/
+        margin-left: auto;
+       /*----------------------------------------------*/
+    }
+    .cat_receita {
+        width: 100%;
+
+    }
+     /*cadastrar Produtos Produtor*/
+     #form-cadastrar-produto {
+        width: 80%;
+        margin: auto;
+        background-color: var(--roxo_fundo);
+        color: var(--roxo_letra_fundo);       
+        padding: 70px 10px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+} 
+
+@media(max-width:1024px){
+    .swiper-slide img{
+        padding: 40px 8px; 
+        width: 70%;
+    }
+
+/* header*/
+.container-home {
+    width: 375px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center; 
+    padding: 20px 0px 20px 0px;
+    text-align: center;
+}
+
+/*Adicionado 09/08/2019*/
+.banner{
+    display: none;
+}
+.marg{
+    margin-bottom: 150px;
+}
+.dicas{
+    font-size: 15px;
+    padding: 40px 20px;
+}
+.card{
+    margin: 10px;
+}
+
+/*botao header*/
+.ul-perfil a{
+    text-decoration: none;
+    color: var(--roxo);
+    font-weight: bold;
+    font-size: 18px; 
+    font-family: var(--fonte_titulo);
+}
+#POST-cadastro-ingredientes {
+    width: 60vh;
+}
+
+.rodape {
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+}
+
+.rodape p{
+    display: none;
+}
+
+
+/* PESQUISAR PRODUTOS */
+
+#pesquisar-produto #POST-preco-prod{
+    width: 20vw;
+    height: 4vh;
+    margin-left: 10px;
+    }
+    
+
+}
+
+@media(max-width:1100px){
+    .container-home {
+    width: 375px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center; 
+    padding: 20px 0px 20px 0px;
+    text-align: center;
+    }
+}
+@media(max-width:1240px){
+    /*espaço header*/
+    .ul-home li{
+        padding: 2px;
+    }
+    
+    /*slider*/
+    .swiper-slide img{
+        padding: 40px 8px; 
+        width: 70%;
+    }
+    .card img{
+        width: 65%;
+        height: 50%;
+    }
+/* PESQUISAR PRODUTOS */
+    .max-min input{
+        margin-bottom: 10px;
+    }
+    .max-min{
+        margin: 30px 0px;
+        justify-content: center;
+    }
+    #pesquisar-produto{
+        /* text-align: center; */
+        display: flex;
+    }
+}
+
