@@ -14,7 +14,7 @@ namespace Backend.Controllers
     [ApiController]
     public class PedidoController : ControllerBase
     {
-        // GufosContext _contexto = new GufosContext();
+        // organixContext _contexto = new organixContext();
 
         PedidoRepository _repositorio = new PedidoRepository();
 
@@ -25,7 +25,7 @@ namespace Backend.Controllers
             var pedidos = await _repositorio.Listar();
 
             if(pedidos == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Nenhum pedido foi encontrado!"});;
             }
 
             return pedidos;
@@ -40,7 +40,7 @@ namespace Backend.Controllers
             var pedido = await _repositorio.BuscarPorId(id);
 
             if(pedido == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Nenhum produto foi encontrado para o id informado!"});
             }
 
             return pedido;
@@ -84,7 +84,7 @@ namespace Backend.Controllers
                 var pedido_valido = await _repositorio.BuscarPorId(id);
 
                 if(pedido_valido == null){
-                    return NotFound();
+                    return NotFound(new {mensagem = "Nenhum produto foi encontrado!"});
                 }else{
 
                 throw;
@@ -101,7 +101,7 @@ namespace Backend.Controllers
         public async Task<ActionResult<Pedido>> Delete(int id){
             var pedido = await _repositorio.BuscarPorId(id);
             if(pedido == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Não foi possível deletar o produto pois o ID informado não existe!"});
             }
             await _repositorio.Excluir(pedido);
             

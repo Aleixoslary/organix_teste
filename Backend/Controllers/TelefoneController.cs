@@ -14,7 +14,7 @@ namespace Backend.Controllers
     [ApiController]
     public class TelefoneController : ControllerBase
     {
-        // GufosContext _contexto = new GufosContext();
+        // organixContext _contexto = new organixContext();
 
         TelefoneRepository _repositorio = new TelefoneRepository();
 
@@ -25,7 +25,7 @@ namespace Backend.Controllers
             var telefones = await _repositorio.Listar();
 
             if(telefones == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Nenhum telefone foi encontrado!"});
             }
 
             return telefones;
@@ -40,7 +40,7 @@ namespace Backend.Controllers
             var telefone = await _repositorio.BuscarPorId(id);
 
             if(telefone == null){
-                return NotFound();
+               return NotFound(new {mensagem = "Nenhum telefone foi encontrado para o ID informado verifique e tente novamente!"});
             }
 
             return telefone;
@@ -68,7 +68,7 @@ namespace Backend.Controllers
         public async Task<ActionResult> Put(int id, Telefone telefone){
             // Se o id do objeto não existir, ele retorna erro 400
             if(id != telefone.IdTelefone){
-                return BadRequest();
+                return NotFound(new {mensagem = "Nenhum telefone foi encontrado para o ID informado verifique e tente novamente!"});
             }
             
             
@@ -84,7 +84,7 @@ namespace Backend.Controllers
                 var telefone_valido = await _repositorio.BuscarPorId(id);
 
                 if(telefone_valido == null){
-                    return NotFound();
+                    return NotFound(new {mensagem = "Nada foi encontrado!"});
                 }else{
 
                 throw;
@@ -101,7 +101,7 @@ namespace Backend.Controllers
         public async Task<ActionResult<Telefone>> Delete(int id){
             var telefone = await _repositorio.BuscarPorId(id);
             if(telefone == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Não foi possível deletar pois nenhum telefone foi encontrado para o ID informado verifique e tente novamente!"});
             }
             await _repositorio.Excluir(telefone);
             

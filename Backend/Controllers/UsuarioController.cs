@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Backend.Domains;
+using Backend.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,15 +15,16 @@ namespace Backend.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        OrganixContext _contexto = new OrganixContext();
+        
+        UsuarioRepository _repositorio = new UsuarioRepository();
+        VerificaController _verificar = new VerificaController(); 
         // GET : api/Usuario
         [HttpGet]
         public async Task<ActionResult<List<Usuario>>> Get(){
 
-            var usuarios = await _contexto.Usuario.Include(u => u.Endereco).Include(u => u.Telefone).
-            Include(u => u.IdTipoNavigation).ToListAsync();
+            var usuarios = await _repositorio.Listar();
             if(usuarios == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Nenhum usuário foi encontrado!"});
             }
             return usuarios;
         }
@@ -32,15 +34,13 @@ namespace Backend.Controllers
         public async Task<ActionResult<Usuario>> Get(int id){
 
             // FindAsync = procura algo específico no banco
-            var usuario = await _contexto.Usuario.Include(u => u.Endereco).Include(u => u.Telefone).
-            Include(u => u.IdTipoNavigation).FirstOrDefaultAsync(e => e.IdUsuario == id);
+            var usuario = await _repositorio.BuscarPorId(id);
 
             if(usuario == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Nenhum usuário foi encontrado com esse ID!"});
             }
-
+             
             return usuario;
-
         }
 
         // POST api/Usuario
@@ -49,49 +49,85 @@ namespace Backend.Controllers
             try
             {
                 // Tratamos contra ataques de SQL Injection
-                await _contexto.AddAsync(usuario);
-                if (ValidaCPF(usuario.CpfCnpj)==true && ValidaCNPJ(usuario.CpfCnpj)==true){
-                    // Salvamos efetivamente o nosso objeto no banco de dados
-                await _contexto.SaveChangesAsync();
-                } else{
-                   return BadRequest();
+                await _repositorio.Alterar(usuario);
+
+                usuario.CpfCnpj = usuario.CpfCnpj.Replace(".", "");
+                usuario.CpfCnpj = usuario.CpfCnpj.Replace("/", ""); 
+                usuario.CpfCnpj = usuario.CpfCnpj.Replace(" ", ""); 
+                usuario.CpfCnpj = usuario.CpfCnpj.Replace("-", ""); 
+
+                if (usuario.CpfCnpj.Length == 14){
+                    var confirmado = _verificar.ValidaCNPJ(usuario.CpfCnpj);
+                    if(confirmado == true){
+                        await _repositorio.Salvar(usuario);
+                    }else{
+                        return BadRequest(new {mensagem = "Cnpj inválido!"});
+                    }         
+                              
+                } else if(usuario.CpfCnpj.Length == 11){
+                    var confirmado =  _verificar.ValidaCPF(usuario.CpfCnpj);
+                    if(confirmado == true){
+                        await _repositorio.Salvar(usuario);
+                    }else{
+                        return BadRequest(new {mensagem = "Cpf inválido!"});
+                    }      
+                }else{
+                   return BadRequest(new {mensagem = "CPF ou CNPJ inválido, verifique os dados cadastrados!"});
                 }
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                
+            catch (DbUpdateConcurrencyException){  
                 throw;
             }
-
             return usuario;
         }
 
-        private bool ValidaCPF()
-        {
-            throw new NotImplementedException();
-        }
+        // private bool ValidaCPF()
+        // {
+        //     throw new NotImplementedException();
+        // }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, Usuario usuario){
             // Se o id do objeto não existir, ele retorna erro 400
             if(id != usuario.IdUsuario){
-                return BadRequest();
+                return BadRequest(new {mensagem = "Nenhum usuário cadastrado com este id!"});
             }
+                usuario.CpfCnpj = usuario.CpfCnpj.Replace(".", "");
+                usuario.CpfCnpj = usuario.CpfCnpj.Replace("/", ""); 
+                usuario.CpfCnpj = usuario.CpfCnpj.Replace(" ", ""); 
+                usuario.CpfCnpj = usuario.CpfCnpj.Replace("-", ""); 
+
+                if (usuario.CpfCnpj.Length == 14){
+                    var confirmado = _verificar.ValidaCNPJ(usuario.CpfCnpj);
+                    if(confirmado == true){
+                        await _repositorio.Salvar(usuario);
+                    }else{
+                        return BadRequest(new {mensagem = "Cnpj inválido!"});
+                    }         
+                              
+                } else if(usuario.CpfCnpj.Length == 11){
+                    var confirmado =  _verificar.ValidaCPF(usuario.CpfCnpj);
+                    if(confirmado == true){
+                        await _repositorio.Salvar(usuario);
+                    }else{
+                        return BadRequest(new {mensagem = "Cpf inválido!"});
+                    }      
+                }else{
+                   return BadRequest(new {mensagem = "CPF ou CNPJ inválido, verifique os dados cadastrados!"});
+                }
             
             // Comparamos os atributos que foram modificados através do EF
-            _contexto.Entry(usuario).State = EntityState.Modified;
-
             try
             {
-                await _contexto.SaveChangesAsync();
+                await _repositorio.Alterar(usuario);
             }
             catch (DbUpdateConcurrencyException)
             {
                 // Verificamos se o objeto inserido realmente existe no banco
-                var usuario_valido = await _contexto.Usuario.FindAsync(id);
+                var usuario_valido = await _repositorio.BuscarPorId(id);
 
                 if(usuario_valido == null){
-                    return NotFound();
+                    return NotFound(new {mensagem = "Nenhum usuário encontrado!"});
                 }else{
 
                 throw;
@@ -106,131 +142,15 @@ namespace Backend.Controllers
         // DELETE api/usuario/id
         [HttpDelete("{id}")]
         public async Task<ActionResult<Usuario>> Delete(int id){
-            var usuario = await _contexto.Usuario.FindAsync(id);
+            var usuario = await _repositorio.BuscarPorId(id);
             if(usuario == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Não foi possível deletar o usuário pois o ID não existe!"});
             }
-            _contexto.Usuario.Remove(usuario);
-            await _contexto.SaveChangesAsync();
+        
+            await _repositorio.Excluir(usuario);
 
             return usuario;
         }
 
-        static bool ValidaCPF(string cpfUsuario){
-
-            bool resultado = false;
-            int[] v1 ={10,9,8,7,6,5,4,3,2};
-            string cpfCalculo ="";
-            int resto=0;
-            string digito_v1="";
-            string digito_v2="";
-            int calculo=0;
-
-            cpfCalculo = cpfUsuario.Substring(0,9);
-
-            for(int i=0; i<=8;i++){
-                calculo+= int.Parse(cpfCalculo[i].ToString()) * v1[i];
-            }
-
-           resto=calculo%11;
-           calculo=11-resto;
-
-            if(calculo>9){
-                digito_v1="0";
-            } else{
-                digito_v1=calculo.ToString();
-            }
-
-            if(digito_v1 ==cpfUsuario[9].ToString()){
-                resultado=true;
-            }
-
-            int[] v2={11,10,9,8,7,6,5,4,3,2};
-            resto=0;
-
-            cpfCalculo= cpfCalculo+calculo.ToString();
-            calculo=0;
-
-            for(int i=0; i<=9;i++){
-                calculo+= int.Parse(cpfCalculo[i].ToString()) * v2[i];
-            }
-
-           resto=calculo%11;
-           calculo=11-resto;
-
-            if(calculo>9){
-                digito_v2="0";
-            } else{
-                digito_v2=calculo.ToString();
-            }
-
-            if(digito_v2==cpfUsuario[10].ToString()){
-                resultado=true;
-            }else{
-                resultado=false;
-            }
-            return resultado;
-        }
-
-           static bool ValidaCNPJ(string cnpj){
-
-            bool resultado=false;
-            int[] v1={5,4,3,2,9,8,7,6,5,4,3,2};
-            string cnpjCalc="";
-            int resto=0;
-            string di_v1="";
-            string di_v2 ="";
-            int calc=0;
-
-            cnpj= cnpj.Replace(" ","");
-            cnpj=cnpj.Replace("-","");
-            cnpj=cnpj.Replace(".","");
-            cnpj=cnpj.Replace("/","");
-
-            cnpjCalc=cnpj.Substring(0,12);
-
-            for (int i=0; i<=11;i++){
-                calc += int.Parse(cnpjCalc[i].ToString())*v1[i];
-            }
-
-            resto= calc%11;
-            calc=11-resto;
-
-            if(resto<2){
-                di_v1="0";
-            }else{
-                di_v1=calc.ToString();
-            }
-
-            if(di_v1 ==cnpj[12].ToString()){
-                resultado=true;
-            }
-
-            int[] v2={6,5,4,3,2,9,8,7,6,5,4,3,2};
-            resto=0;
-            cnpjCalc= cnpjCalc+calc.ToString();
-            calc=0;
-            
-            for (int i=0; i<=12;i++){
-                calc += int.Parse(cnpjCalc[i].ToString())*v2[i];
-            }
-
-            resto= calc%11;
-            calc=11-resto;
-
-            if(resto<2){
-                di_v2="0";
-            }else{
-                di_v2=calc.ToString();
-            }
-
-            if(di_v2 ==cnpj[13].ToString()){
-                resultado=true;
-
-            }else{ resultado=false;
-            }
-
-            return resultado;
-        }
     }
 }

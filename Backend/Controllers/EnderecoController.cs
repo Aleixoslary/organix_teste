@@ -15,9 +15,10 @@ namespace Backend.Controllers
     [ApiController]
     public class EnderecoController : ControllerBase
     {
-        // GufosContext _contexto = new GufosContext();
+        // organixContext _contexto = new organixContext();
 
         EnderecoRepository _repositorio = new EnderecoRepository();
+
 
         // GET : api/Endereco
         [HttpGet]
@@ -26,7 +27,7 @@ namespace Backend.Controllers
             var enderecos = await _repositorio.Listar();
 
             if(enderecos == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Nenhum endereço foi encocntrado!"});
             }
 
             return enderecos;
@@ -39,10 +40,12 @@ namespace Backend.Controllers
 
             // FindAsync = procura algo específico no banco
             var endereco = await _repositorio.BuscarPorId(id);
-
+            
+            
             if(endereco == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Nenhuma endereço para o ID informado verifique e tente novamente!"});
             }
+
 
             return endereco;
 
@@ -69,11 +72,9 @@ namespace Backend.Controllers
         public async Task<ActionResult> Put(int id, Endereco endereco){
             // Se o id do objeto não existir, ele retorna erro 400
             if(id != endereco.IdEndereco){
-                return BadRequest();
+                return BadRequest(new {mensagem = "Nenhum endereço encontrado!"});
             }
             
-            
-
             try
             {
 
@@ -85,7 +86,7 @@ namespace Backend.Controllers
                 var endereco_valido = await _repositorio.BuscarPorId(id);
 
                 if(endereco_valido == null){
-                    return NotFound();
+                    return NotFound(new {mensagem = "Nenhum endereço foi encontrada para o ID informado verifique e tente novamente!"});
                 }else{
 
                 throw;
@@ -102,7 +103,7 @@ namespace Backend.Controllers
         public async Task<ActionResult<Endereco>> Delete(int id){
             var endereco = await _repositorio.BuscarPorId(id);
             if(endereco == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Nenhuma endereço foi encontrado para o ID informado verifique e tente novamente!"});
             }
             await _repositorio.Excluir(endereco);
             

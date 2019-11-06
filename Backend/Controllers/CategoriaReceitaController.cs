@@ -13,7 +13,7 @@ namespace Backend.Controllers
     [ApiController]
     public class CategoriaReceitaController : ControllerBase
     {
-        // GufosContext _contexto = new GufosContext();
+        // organixContext _contexto = new organixContext();
 
         CategoriaReceitaRepository _repositorio = new CategoriaReceitaRepository();
 
@@ -25,7 +25,7 @@ namespace Backend.Controllers
             var categoriaReceitas = await _repositorio.Listar();
 
             if(categoriaReceitas == null){
-                return NotFound();
+                 return NotFound(new {mensagem = "Não foi encontrada nenhuma Categoria!"});
             }
 
             return categoriaReceitas;
@@ -41,7 +41,7 @@ namespace Backend.Controllers
             var categoriaReceita = await _repositorio.BuscarPorId(id);
 
             if(categoriaReceita == null){
-                return NotFound();
+                 return NotFound(new {mensagem = "Nenhuma categoria encontrada para o ID informado verifique e tente novamente!"});
             }
 
             return categoriaReceita;
@@ -86,7 +86,7 @@ namespace Backend.Controllers
                 var categoriaReceita_valido = await _repositorio.BuscarPorId(id);
 
                 if(categoriaReceita_valido == null){
-                    return NotFound();
+                     return NotFound(new {mensagem = "Nenhuma categoria encontrada para o ID informado"});
                 }else{
 
                 throw;
@@ -104,7 +104,7 @@ namespace Backend.Controllers
         public async Task<ActionResult<CategoriaReceita>> Delete(int id){
             var categoriaReceita = await _repositorio.BuscarPorId(id);
             if(categoriaReceita == null){
-                return NotFound();
+                 return NotFound(new {mensagem = "Nenhuma categoria encontrada para o ID informado verifique e tente novamente!"});
             }
             await _repositorio.Excluir(categoriaReceita);
             

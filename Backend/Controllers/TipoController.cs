@@ -14,7 +14,7 @@ namespace Backend.Controllers
     [ApiController]
     public class TipoController : ControllerBase
     {
-        // GufosContext _contexto = new GufosContext();
+        // organixContext _contexto = new organixContext();
 
         TipoRepository _repositorio = new TipoRepository();
 
@@ -25,7 +25,7 @@ namespace Backend.Controllers
             var tipos = await _repositorio.Listar();
 
             if(tipos == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Nenhum tipo foi encontrado para o ID informado verifique e tente novamente!"});
             }
 
             return tipos;
@@ -40,7 +40,7 @@ namespace Backend.Controllers
             var tipo = await _repositorio.BuscarPorId(id);
 
             if(tipo == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Nenhum tipo foi encontrado para o ID informado verifique e tente novamente!"});
             }
 
             return tipo;
@@ -101,7 +101,7 @@ namespace Backend.Controllers
         public async Task<ActionResult<Tipo>> Delete(int id){
             var tipo = await _repositorio.BuscarPorId(id);
             if(tipo == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Não foi possível deletar pois Nenhum tipo foi encontrado para o ID informado verifique e tente novamente!"});
             }
             await _repositorio.Excluir(tipo);
             

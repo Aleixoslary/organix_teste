@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Backend.ViewModels;
 
 namespace Backend.Controllers
 {
@@ -28,7 +29,7 @@ namespace Backend.Controllers
         }
 
         // Chamamos nosso método para validar nosso usuário da aplicação
-        private Usuario AuthenticateUser(Usuario login)  
+        private Usuario AuthenticateUser(LoginViewModel login)  
         {  
             var usuario =  _context.Usuario.Include( l => l.IdTipoNavigation).FirstOrDefault(u => u.Email == login.Email && u.Senha == login.Senha);
   
@@ -52,6 +53,7 @@ namespace Backend.Controllers
                 new Claim(JwtRegisteredClaimNames.NameId, userInfo.Nome),  
                 new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
                 new Claim(ClaimTypes.Role,  userInfo.IdTipo.ToString()),
+                new Claim("Role",  userInfo.IdTipo.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())  
             }; 
 
@@ -68,9 +70,10 @@ namespace Backend.Controllers
 
         
         // Usamos essa anotação para ignorar a autenticação neste método, já que é ele quem fará isso  
-        [AllowAnonymous]  
+        
+    
         [HttpPost]  
-        public IActionResult Login([FromBody]Usuario login)  
+        public IActionResult Login([FromBody]LoginViewModel login)  
         {  
             IActionResult response = Unauthorized();  
             var user = AuthenticateUser(login);  

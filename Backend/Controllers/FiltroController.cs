@@ -15,7 +15,7 @@ namespace Backend.Controllers
     [ApiController]
     public class FiltroController : ControllerBase
     {
-        // GufosContext _contexto = new GufosContext();
+        // organixContext _contexto = new organixContext();
 
         FiltroRepository _repositorio = new FiltroRepository();
 
@@ -27,7 +27,8 @@ namespace Backend.Controllers
             var ofertas = await _repositorio.Filtro(Dados);
 
             if(ofertas == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Nenhuma oferta foi encontrada!"});
+
             }
             return ofertas;
         }

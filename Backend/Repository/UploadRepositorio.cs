@@ -3,9 +3,9 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
 
-    namespace backend.Controllers
+    namespace backend.Repositories
     {
-        public class UploadController : ControllerBase
+        public class UploadRepository : ControllerBase
         {
             public string Upload (IFormFile arquivo, string savingFolder) {
                 

@@ -14,7 +14,7 @@ namespace Backend.Controllers
     [ApiController]
     public class OfertaController : ControllerBase
     {
-        // GufosContext _contexto = new GufosContext();
+        // organixContext _contexto = new organixContext();
 
         OfertaRepository _repositorio = new OfertaRepository();
 
@@ -26,7 +26,7 @@ namespace Backend.Controllers
             var ofertas = await _repositorio.Listar();
 
             if(ofertas == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Nenhuma Oferta foi encontrada!"});
             }
             return ofertas;
         }
@@ -41,7 +41,7 @@ namespace Backend.Controllers
             var oferta = await _repositorio.BuscarPorId(id);
 
             if(oferta == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Nenhuma Oferta foi encontrada para o id informado!"});
             }
 
             return oferta;
@@ -84,7 +84,7 @@ namespace Backend.Controllers
                 var oferta_valido = await _repositorio.BuscarPorId(id);
 
                 if(oferta_valido == null){
-                    return NotFound();
+                    return NotFound(new {mensagem = "Nenhuma Oferta foi encontrada!"});
                 }else{
 
                 throw;
@@ -101,7 +101,7 @@ namespace Backend.Controllers
         public async Task<ActionResult<Oferta>> Delete(int id){
             var oferta = await _repositorio.BuscarPorId(id);
             if(oferta == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Não foi possível deletar a oferta pois o ID informado não existe!"});
             }
             await _repositorio.Excluir(oferta);
             

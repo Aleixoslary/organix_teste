@@ -3,6 +3,8 @@ using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using backend.Controllers;
+using backend.Repositories;
 using Backend.Domains;
 using Backend.Repositories;
 using Backend.ViewModels;
@@ -21,6 +23,8 @@ namespace Backend.Controllers
         // GufosContext _contexto = new GufosContext();
 
         ReceitaRepository _repositorio = new ReceitaRepository();
+        UploadController _uploadController = new UploadController();
+        
 
         // GET : api/Receita
         [HttpGet]
@@ -29,7 +33,7 @@ namespace Backend.Controllers
             var receitas = await _repositorio.Listar();
 
             if(receitas == null){
-                return NotFound();
+                    return NotFound(new {mensagem = "Não é possível encontrar esta receita."});  
             }
 
             return receitas;
@@ -44,7 +48,7 @@ namespace Backend.Controllers
             var receita = await _repositorio.BuscarPorId(id);
 
             if(receita == null){
-                return NotFound();
+                    return NotFound(new {mensagem = "Não é possível encontrar esta receita."}); 
             }
 
             return receita;
@@ -63,47 +67,24 @@ namespace Backend.Controllers
         // POST api/Receita
         [HttpPost]
         public async Task<ActionResult<Receita>> Post([FromForm]Receita receita){
+             var arquivo = Request.Form.Files[0];
+             receita.Imagem =  _uploadController.Upload(arquivo,"Resources/Images");
+            
 
-            try
-            {
-             var file = Request.Form.Files[0];
-                var folderName = Path.Combine ("Resources", "Images");
-                var pathToSave = Path.Combine (Directory.GetCurrentDirectory (), folderName);
-
-                if (file.Length > 0) {
-                    var fileName = ContentDispositionHeaderValue.Parse (file.ContentDisposition).FileName.Trim ('"');
-                    var fullPath = Path.Combine (pathToSave, fileName);
-                    var dbPath = Path.Combine (folderName, fileName);
-
-                    using (var stream = new FileStream (fullPath, FileMode.Create)) {
-                        file.CopyTo (stream);
-                    }
-
-                    receita.Imagem =  fileName;   
                 await _repositorio.Salvar(receita);
-            }
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                
-                throw;
-            }
-
-            return receita;
+            
+                return receita;
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, Receita receita){
             // Se o id do objeto não existir, ele retorna erro 400
             if(id != receita.IdReceita){
-                return BadRequest();
+                return NotFound(new {mensagem = "Receita inexistente."});  
+               
             }
-            
-            
-
             try
             {
-
                 await _repositorio.Alterar(receita);
             }
             catch (DbUpdateConcurrencyException)
@@ -112,13 +93,11 @@ namespace Backend.Controllers
                 var receita_valido = await _repositorio.BuscarPorId(id);
 
                 if(receita_valido == null){
-                    return NotFound();
+                    return NotFound(new {mensagem = "Não é possível alterar este produto."});  
                 }else{
 
                 throw;
-                }
-
-                
+                } 
             }
             // NoContent = retorna 204, sem nada
             return NoContent();
@@ -129,7 +108,7 @@ namespace Backend.Controllers
         public async Task<ActionResult<Receita>> Delete(int id){
             var receita = await _repositorio.BuscarPorId(id);
             if(receita == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Receita inexistente."});  
             }
             await _repositorio.Excluir(receita);
             

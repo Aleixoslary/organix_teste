@@ -14,7 +14,7 @@ namespace Backend.Controllers
     [ApiController]
     public class ItemPedidoController : ControllerBase
     {
-        // GufosContext _contexto = new GufosContext();
+        // organixContext _contexto = new organixContext();
 
         ItemPedidoRepository _repositorio = new ItemPedidoRepository();
 
@@ -25,7 +25,7 @@ namespace Backend.Controllers
             var itemPedidos = await _repositorio.Listar();
 
             if(itemPedidos == null){
-                return NotFound();
+                return NotFound(new {mensagem = "Não foi possível deletar o produto pois o ID informado não existe!"});
             }
 
             return itemPedidos;
